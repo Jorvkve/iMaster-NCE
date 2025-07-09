@@ -1,10 +1,15 @@
 from flask import Flask, request
 import requests
+import os
 
 app = Flask(__name__)
 
-TELEGRAM_BOT_TOKEN = '7698602745:AAFMv5XvD0OVfiYxPiLD94IOJI9IS0dpewg'
+TELEGRAM_TOKEN = '7698602745:AAFMv5XvD0OVfiYxPiLD94IOJI9IS0dpewg'
 CHAT_ID = '-4949237168'
+
+@app.route('/')
+def index():
+    return 'Webhook is running.'
 
 @app.route('/receive-alarm', methods=['POST'])
 def receive_alarm():
@@ -17,3 +22,7 @@ def receive_alarm():
     telegram_url = f"https://api.telegram.org/bot7698602745:AAFMv5XvD0OVfiYxPiLD94IOJI9IS0dpewg/sendMessage"
     requests.post(telegram_url, json={"chat_id": CHAT_ID, "text": message})
     return 'OK'
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
