@@ -14,6 +14,6 @@ def receive_alarm():
     description = data.get('description', '')
 
     message = f"🚨 [{severity}] {alarm}\n{description}"
-    telegram_url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    telegram_url = f"https://api.telegram.org/bot7698602745:AAFMv5XvD0OVfiYxPiLD94IOJI9IS0dpewg/sendMessage"
     requests.post(telegram_url, json={"chat_id": CHAT_ID, "text": message})
     return 'OK'
