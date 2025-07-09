@@ -24,7 +24,10 @@ def receive_alarm():
     print("🔔 Alarm/Event received:", data)
 
     # สร้างข้อความส่ง Telegram (หากใช้)
-    msg = f"📡 [NCE Alarm/Event]\n\n{data}"
+    msg = f"""📡 <b>[NCE Alarm/Event]</b>
+    <b>Alarm Name:</b> {data.get("alarmName")}
+    <b>Severity:</b> {data.get("severity")}
+    """
 
     # ส่งข้อความไปยัง Telegram (ถ้าคุณเชื่อม bot ไว้แล้ว)
     telegram_bot_token = "7698602745:AAFMv5XvD0OVfiYxPiLD94IOJI9IS0dpewg"
